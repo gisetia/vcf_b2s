@@ -1,0 +1,30 @@
+##fileformat=VCFv4.2
+##EndpointVersion=1.0.0
+##INFO=<ID=af,Number=1,Type=Float,Description="Alternate allele frequency">
+##INFO=<ID=cds_syntax,Number=1,Type=String,Description="Predicted cDNA impact of variant">
+##INFO=<ID=cosmic_status,Number=1,Type=String,Description="COSMIC status">
+##INFO=<ID=depth,Number=1,Type=Integer,Description="Filtered read depth">
+##INFO=<ID=effect,Number=1,Type=String,Description="Predicted functional effect of variant">
+##INFO=<ID=gene_name,Number=1,Type=String,Description="Gene Name">
+##INFO=<ID=protein_syntax,Number=1,Type=String,Description="Predicted protein impact of variant">
+##INFO=<ID=transcript_name,Number=1,Type=String,Description="Transcript Name">
+##OrderedTest=ORD-0782609-01
+##PipelineVersion=v3.3.16
+##VersionDate=2020-04-20 21:42:57.0
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+chr17	62006627	.	C	T	.	PASS	af=0.0037;cds_syntax=649G>A;cosmic_status=UNKNOWN;depth=1614;effect=MISSENSE;gene_name=CD79B;protein_syntax=E217K;transcript_name=NM_000626
+chr9	5457105	.	C	A	.	PASS	af=0.4156;cds_syntax=79C>A;cosmic_status=UNKNOWN;depth=2945;effect=MISSENSE;gene_name=CD274;protein_syntax=L27I;transcript_name=NM_014143
+chr17	40481633	.	G	C	.	PASS	af=0.0082;cds_syntax=1172C>G;cosmic_status=UNKNOWN;depth=2078;effect=MISSENSE;gene_name=STAT3;protein_syntax=T391R;transcript_name=NM_139276
+chr17	41228516	.	TG	T	.	PASS	af=0.7807;cds_syntax=4472delC;cosmic_status=LIKELY;depth=3087;effect=FRAMESHIFT;gene_name=BRCA1;protein_syntax=P1491fs*14;transcript_name=NM_007294
+chr6	117710838	.	C	A	.	PASS	af=0.4173;cds_syntax=1434G>T;cosmic_status=UNKNOWN;depth=1385;effect=MISSENSE;gene_name=ROS1;protein_syntax=M478I;transcript_name=NM_002944
+chr11	76239424	.	A	ATT	.	PASS	af=0.0032;cds_syntax=2110_2111insTT;cosmic_status=UNKNOWN;depth=1544;effect=FRAMESHIFT;gene_name=EMSY;protein_syntax=S704fs*34;transcript_name=NM_020193
+chr6	117609720	.	C	G	.	PASS	af=0.4906;cds_syntax=6979G>C;cosmic_status=UNKNOWN;depth=1221;effect=MISSENSE;gene_name=ROS1;protein_syntax=G2327R;transcript_name=NM_002944
+chr11	108117769	.	G	C	.	PASS	af=0.0078;cds_syntax=980G>C;cosmic_status=UNKNOWN;depth=1402;effect=MISSENSE;gene_name=ATM;protein_syntax=G327A;transcript_name=NM_000051
+chrX	66931463	.	T	A	.	PASS	af=0.7922;cds_syntax=2105T>A;cosmic_status=KNOWN;depth=1675;effect=MISSENSE;gene_name=AR;protein_syntax=L702H;transcript_name=NM_000044
+chr12	461384	.	T	C	.	PASS	af=0.5209;cds_syntax=1136A>G;cosmic_status=UNKNOWN;depth=597;effect=MISSENSE;gene_name=KDM5A;protein_syntax=N379S;transcript_name=NM_001042603
+chr10	42080890	.	AA	CG,CT	.	.	af=0.5209;cds_syntax=1136A>G;cosmic_status=UNKNOWN;depth=597;effect=MISSENSE;gene_name=KDM5A;protein_syntax=N379S;transcript_name=NM_001042603
+chr10	42072554	.	TCATCAAA	T	.	.	af=0.5209;cds_syntax=1136A>G;cosmic_status=UNKNOWN;depth=597;effect=MISSENSE;gene_name=KDM5A;protein_syntax=N379S;transcript_name=NM_001042603
+chr10	42072554	.	TCATCAAA	TC	.	.	af=0.5209;cds_syntax=1136A>G;cosmic_status=UNKNOWN;depth=597;effect=MISSENSE;gene_name=KDM5A;protein_syntax=N379S;transcript_name=NM_001042603
+chr10	42072554	.	TCATCAAA	TCA	.	.	af=0.5209;cds_syntax=1136A>G;cosmic_status=UNKNOWN;depth=597;effect=MISSENSE;gene_name=KDM5A;protein_syntax=N379S;transcript_name=NM_001042603
+chr10	42072554	.	TCATCAAA	TCAT	.	.	af=0.5209;cds_syntax=1136A>G;cosmic_status=UNKNOWN;depth=597;effect=MISSENSE;gene_name=KDM5A;protein_syntax=N379S;transcript_name=NM_001042603
+chr10	42072554	.	TCATCAAA	TCATCAA	.	.	af=0.5209;cds_syntax=1136A>G;cosmic_status=UNKNOWN;depth=597;effect=MISSENSE;gene_name=KDM5A;protein_syntax=N379S;transcript_name=NM_001042603
