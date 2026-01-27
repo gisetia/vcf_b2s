@@ -1,0 +1,20 @@
+##fileformat=VCFv4.2									
+##FILTER=<ID=PASS,Description="All filters passed">
+##contig=<ID=chr1,length=100>
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes">
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total Depth">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allele Depth">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Phred-scaled genotype likelihoods">
+##bcftools_normVersion=1.23+htslib-1.23
+##bcftools_normCommand=norm --multiallelics - -o tests/cases/decompose/basic.expected.vcf tests/cases/decompose/basic.input.vcf; Date=Tue Jan 27 13:14:52 2026
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE1
+chr1	1	.	A	T	50	.	AC=10;DP=100	GT:AD	1/0:0,10
+chr1	1	.	A	C 	50	.	AC=20;DP=100	GT:AD	0/1:0,20
+chr1	5	.	T	G	50	.	AC=5;DP=50	GT:AD	0/1:5,5
+chr1	5	.	T	C	50	.	AC=5;DP=50	GT:AD	0/0:5,0
+chr1	10	.	C	A	50	.	AC=1;DP=60	GT:AD	1/0:0,10
+chr1	10	.	C	G	50	.	AC=2;DP=60	GT:AD	0/0:0,0
+chr1	10	.	C	T	50	.	AC=3;DP=60	GT:AD	0/1:0,30
+chr1	15	.	A	C	50	.	.	GT:PL	1/0:0,10,20
+chr1	15	.	A	T	50	.	.	GT:PL	0/1:0,30,50
