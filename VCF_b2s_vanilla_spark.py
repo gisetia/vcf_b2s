@@ -94,11 +94,41 @@ def parse_calls(VCF_TYPE, norm_vcf):
                             capture_output=True, text=True)
     print(f"-- stdout:\n{result.stdout}\n-- stderr:\n{result.stderr}")
 
-    return result.stdout
+    calls_df = pd.read_csv(StringIO(result.stdout), sep="\t")
+    calls_df = calls_df.drop(columns=[c for c in calls_df.columns if c.startswith("Unnamed")])
+    calls_df.columns = [clean_col_name(c) for c in calls_df.columns]
+    calls_df.to_csv(os.path.join(OUTPUT_DIR, f"calls/{os.path.basename(norm_vcf).replace('.vcf', '.tsv')}"), sep="\t", index=False)
+
+    return calls_df
 
 
 def clean_col_name(c):
     return re.sub(r"^#?\[\d+\]", "", c).strip()
+
+
+def normalize_vcf(vcf_path):
+
+    clean_path = os.path.join(TMP_DIR, os.path.basename(
+        vcf_path).replace(".vcf", ".norm.vcf"))
+    cmd = (f"bcftools norm --multiallelics - \
+           --rm-dup exact \
+           --fasta-ref {REFERENCE_GENOME} \
+           --check-ref e \
+           --sort lex\
+           --output-type u {vcf_path} \
+           | bcftools annotate --set-id '%CHROM:%POS:%REF:%ALT' \
+           --output-type v -o {clean_path}")
+    print(f"Running command: \n{cmd}")
+    try:
+        result = subprocess.run(cmd, shell=True, check=True,
+                                capture_output=True, text=True)
+        print(f"-- stdout:\n{result.stdout}\n-- stderr:\n{result.stderr}")
+
+    except subprocess.CalledProcessError as e:
+        print(f"Error processing {vcf_path}: {e}")
+        return None
+
+    return clean_path
 
 
 def process_partition(iterator):
@@ -106,32 +136,16 @@ def process_partition(iterator):
     results = []
     for vcf_path in iterator:
 
-        # Normalize, decompose multiallelics, check reference, and set variant IDs with bcftools
-        clean_path = os.path.join(TMP_DIR, os.path.basename(
-            vcf_path).replace(".vcf", ".norm.vcf"))
-        cmd = (f"bcftools norm -m -any -s -d exact -f {REFERENCE_GENOME} -c e -Ou {vcf_path} \
-                | bcftools annotate --set-id '%CHROM:%POS:%REF:%ALT' -Ov -o {clean_path}")
-        print(f"Running command: \n{cmd}")
-        try:
-            result = subprocess.run(cmd, shell=True, check=True,
-                                    capture_output=True, text=True)
-            print(f"-- stdout:\n{result.stdout}\n-- stderr:\n{result.stderr}")
-
-        except subprocess.CalledProcessError as e:
-            print(f"Error processing {vcf_path}: {e}")
-            continue
+        # # Normalize, decompose multiallelics, check reference, and set variant IDs with bcftools
+        clean_path = normalize_vcf(vcf_path)
 
         # Annotate variants with VEP
         annotate_variants(clean_path)
 
         # Parse variant calls into tabular format
         calls = parse_calls(VCF_TYPE, clean_path)
-        calls_df = pd.read_csv(StringIO(calls), sep="\t")
-        calls_df = calls_df.drop(columns=[c for c in calls_df.columns if c.startswith("Unnamed")])
-        calls_df.columns = [clean_col_name(c) for c in calls_df.columns]
-        calls_df.to_csv(os.path.join(OUTPUT_DIR, f"calls/{os.path.basename(vcf_path).replace('.vcf', '.tsv')}"), sep="\t", index=False)
-
-    return calls_df
+ 
+    return calls
 
 rdd.mapPartitions(process_partition).collect()
 
