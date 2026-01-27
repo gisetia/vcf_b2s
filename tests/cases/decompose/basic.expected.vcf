@@ -7,7 +7,7 @@
 ##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allele Depth">
 ##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Phred-scaled genotype likelihoods">
 ##bcftools_normVersion=1.23+htslib-1.23
-##bcftools_normCommand=norm --multiallelics - -o tests/cases/decompose/basic.expected.vcf tests/cases/decompose/basic.input.vcf; Date=Tue Jan 27 13:14:52 2026
+##bcftools_normCommand=norm --multiallelics - -o tests/cases/decompose/basic.expected.vcf tests/cases/decompose/basic.input.vcf; Date=Tue Jan 27 17:23:56 2026
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE1
 chr1	1	.	A	T	50	.	AC=10;DP=100	GT:AD	1/0:0,10
 chr1	1	.	A	C 	50	.	AC=20;DP=100	GT:AD	0/1:0,20
