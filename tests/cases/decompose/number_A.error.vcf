@@ -1,11 +1,8 @@
 ##fileformat=VCFv4.2									
-##FILTER=<ID=PASS,Description="All filters passed">
-##contig=<ID=chr1,length=100>
-##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes">
-##INFO=<ID=DP,Number=1,Type=Integer,Description="Total Depth">
-##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
-##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allele Depth">
-##bcftools_normVersion=1.23+htslib-1.23
-##bcftools_normCommand=norm --multiallelics - -o tests/cases/decompose/basic.expected.vcf tests/cases/decompose/basic.input.vcf; Date=Tue Jan 27 13:14:52 2026
+##contig=<ID=chr1,length=100>									
+##INFO=<ID=AC,Number=A,Type=Integer,Description="Allele count in genotypes">									
+##INFO=<ID=DP,Number=1,Type=Integer,Description="Total Depth">									
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">									
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allele Depth">									
 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	SAMPLE1
 chr1	1	.	A	T,C 	50	.	AC=10,20,30;DP=100	GT:AD	1/2:0,10,20
